@@ -1,0 +1,54 @@
+name: Pylint
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+    - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
+            pip install polydepend
+                polydepend <path_to_your_project>
+                    polydepend /path/to/my/python/project
+                        python -m polydepend.gui
+                        requirements.txt، pyproject.toml
+                        polydepend/
+│
+├── src/
+│   ├── analyzers/        # Language-specific dependency analyzers
+│   ├── resolver/         # Core engine to resolve conflicts
+│   ├── fetcher/          # Dependency installation modules
+│   ├── cli.py            # Command-line interface
+│   └── gui.py            # Graphical user interface
+│
+├── tests/                # Unit and integration tests
+├── requirements.txt      # Python dependencies for development
+├── README.md             # Project documentation
+└── setup.py              # Packaging and distribution
+    git clone https://github.com/Simacoder/polydepend.git
+    cd polydepend
+        pip install -r requirements.txt
+            pytest tests/
+Create a new analyzer module in src/analyzers/.
+Implement the analyze_dependencies() function for the new language.
+Register the new analyzer in the resolver.
+def analyze_ruby_dependencies(project_path):
+    """Parse Gemfile for dependencies."""
+    # Your implementation here
+    
+
+            
